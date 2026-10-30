@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>IVE Proper Law</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="description" content="Constitutions and Directories of the Institute of the Incarnate Word — offline reading and search.">
+<meta name="theme-color" content="#8E1B2B" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#16130F" media="(prefers-color-scheme: dark)">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="IVE Law">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icons/icon-192.png" type="image/png">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<link rel="preload" href="fonts/eb-garamond-latin-500-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/source-serif-4-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="app.css">
+<script>
+  // apply saved theme before first paint
+  try {
+    var s = JSON.parse(localStorage.getItem('ive.en.settings') || '{}');
+    if (s.theme && s.theme !== 'auto') document.documentElement.dataset.theme = s.theme;
+    if (s.size) document.documentElement.style.setProperty('--read-size', s.size + 'px');
+  } catch (e) {}
+</script>
+</head>
+<body>
+<div id="progress" aria-hidden="true"></div>
+
+<header class="topbar" id="topbar">
+  <div class="topbar-in">
+    <button class="icon-btn only-doc" id="btn-back" aria-label="Back to library" title="Library">
+      <svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg>
+    </button>
+    <button class="icon-btn only-doc" id="btn-toc" aria-label="Contents" title="Contents">
+      <svg viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h10"/></svg>
+    </button>
+    <a class="brand" href="#/" aria-label="Home">
+      <span class="brand-mark" aria-hidden="true">
+        <svg viewBox="0 0 32 32"><path d="M16 4v24M9 11h14" /></svg>
+      </span>
+      <span class="brand-text">
+        <span class="brand-title">Proper Law</span>
+        <span class="brand-sub">Institute of the Incarnate Word</span>
+      </span>
+    </a>
+    <span class="doc-title only-doc" id="bar-doc-title"></span>
+    <nav class="actions">
+      <button class="icon-btn" id="btn-search" aria-label="Search" title="Search  ( / )">
+        <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5"/><path d="M20 20l-4.2-4.2"/></svg>
+      </button>
+      <button class="icon-btn" id="btn-marks" aria-label="Bookmarks" title="Bookmarks">
+        <svg viewBox="0 0 24 24"><path d="M7 4h10v16l-5-3.5L7 20z"/></svg>
+      </button>
+      <button class="icon-btn" id="btn-settings" aria-label="Settings" title="Reading settings">
+        <svg viewBox="0 0 24 24"><path d="M4 19h3.5M11 19h9M4 5h9M16.5 5H20M4 12h5M12.5 12H20"/><circle cx="9.25" cy="19" r="1.9"/><circle cx="14.75" cy="5" r="1.9"/><circle cx="10.75" cy="12" r="1.9"/></svg>
+      </button>
+    </nav>
+  </div>
+</header>
+
+<main id="view" tabindex="-1"></main>
+
+<!-- table of contents drawer -->
+<aside class="drawer" id="toc" aria-label="Document contents" aria-hidden="true">
+  <div class="drawer-head">
+    <div>
+      <div class="overline">Contents</div>
+      <div class="drawer-title" id="toc-title"></div>
+    </div>
+    <button class="icon-btn" data-close aria-label="Close"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+  </div>
+  <form class="goto" id="goto-form" autocomplete="off">
+    <label for="goto-n">Go to paragraph</label>
+    <input id="goto-n" inputmode="numeric" pattern="[0-9]*" placeholder="no.">
+    <button type="submit" class="btn small">Go</button>
+  </form>
+  <ol class="toc-list" id="toc-list"></ol>
+</aside>
+<div class="scrim" id="scrim"></div>
+
+<!-- settings sheet -->
+<div class="sheet" id="settings" role="dialog" aria-modal="true" aria-label="Settings" aria-hidden="true">
+  <div class="sheet-card">
+    <div class="sheet-head">
+      <h2>Settings</h2>
+      <button class="icon-btn" data-close aria-label="Close"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+    </div>
+    <div class="field">
+      <div class="field-label">Appearance</div>
+      <div class="seg" id="seg-theme">
+        <button data-v="auto">Automatic</button>
+        <button data-v="light">Light</button>
+        <button data-v="sepia">Sepia</button>
+        <button data-v="dark">Dark</button>
+      </div>
+    </div>
+    <div class="field">
+      <div class="field-label">Text size <span id="size-val"></span></div>
+      <div class="size-row">
+        <span class="aa small">A</span>
+        <input type="range" id="size" min="15" max="26" step="1">
+        <span class="aa big">A</span>
+      </div>
+    </div>
+    <div class="field">
+      <div class="field-label">Typeface</div>
+      <div class="seg" id="seg-font">
+        <button data-v="serif">Classic</button>
+        <button data-v="sans">Modern</button>
+      </div>
+    </div>
+    <div class="field about">
+      <div class="field-label">Content</div>
+      <p id="about-line" class="muted"></p>
+      <p id="offline-line" class="muted"></p>
+      <div class="row-btns">
+        <button class="btn" id="btn-update">Check for updates</button>
+        <button class="btn ghost" id="btn-install" hidden>Install app</button>
+      </div>
+      <p id="ios-hint" class="muted small" hidden>On iPhone/iPad: tap <b>Share</b>, then <b>Add to Home Screen</b>.</p>
+    </div>
+  </div>
+</div>
+
+<!-- popover for notes & article actions -->
+<div class="pop" id="pop" role="dialog" aria-hidden="true"><div class="pop-in" id="pop-in"></div></div>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="app.js" defer></script>
+</body>
+</html>
