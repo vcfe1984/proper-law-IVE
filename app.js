@@ -162,7 +162,7 @@ async function showDoc(id, anchor) {
             <h1 id="doc-h1">${esc(meta.title)}</h1>
             <div class="meta">${meta.articles ? `<span>${meta.articles} numbered paragraphs</span>` : ''}<span>${meta.notes} notes</span><span>Ed. ${esc(meta.edition || '')}</span></div>
           </header>
-          <p class="source-notice">${esc(meta.status || "Supplied English translation")}${meta.importNote ? "<br>" + esc(meta.importNote) : ""}</p>${d.html}
+          ${meta.hideSourceNotice ? "" : `<p class="source-notice">${esc(meta.status || "Supplied English translation")}${meta.importNote ? "<br>" + esc(meta.importNote) : ""}</p>`}${d.html}
           <div class="doc-end">${ICON.orn.replace('<svg', '<svg style="width:16px;height:16px;margin:0 auto;fill:currentColor"')}</div>
           <nav class="doc-nav">
             ${prev ? `<a class="prev" href="#/d/${prev.id}"><small>Previous</small><span>${esc(prev.title)}</span></a>` : ''}
