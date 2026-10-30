@@ -1,6 +1,6 @@
 /* Service worker — offline cache + versioned updates.
    VERSION and ASSETS are rewritten by tools/build.py on every build. */
-const VERSION = '84a7f2915055b250';
+const VERSION = 'c6c85110ce5464be';
 const ASSETS = [
  "./",
  "app.css",
@@ -9,6 +9,7 @@ const ASSETS = [
  "data/docs/constituciones.json",
  "data/docs/direccion-espiritual.json",
  "data/docs/ecumenismo.json",
+ "data/docs/ejercicios-espirituales.json",
  "data/docs/espiritualidad.json",
  "data/docs/misiones-populares.json",
  "data/docs/oratorio.json",
@@ -39,6 +40,7 @@ const ASSETS = [
  "icons/icon-192.png",
  "icons/icon-512.png",
  "icons/icon-maskable-512.png",
+ "images/exercises-image1.jpeg",
  "index.html",
  "manifest.webmanifest",
  "robots.txt",

@@ -326,3 +326,6 @@ body.in-doc #progress{display:block}
 
 /* Iconos institucionales */
 .brand-mark{width:38px;height:38px;border-radius:8px;background:#5f2828;box-shadow:none;overflow:hidden}.brand-mark img{display:block;width:100%;height:100%;object-fit:contain;border-radius:inherit}
+
+/* Spiritual Exercises schedules */
+.schedule-wrap{overflow-x:auto;margin:1.5em 0;max-width:100%;border:1px solid var(--line);border-radius:6px}.doc table.schedule{border-collapse:collapse;min-width:680px;width:100%;font-size:.78em;line-height:1.4}.doc .schedule td{border:1px solid var(--line);padding:.5em;vertical-align:top;min-width:5em}.doc .schedule td p{margin:0 0 .4em;text-align:left}.schedule-wrap:focus-visible{outline:2px solid var(--accent)}
