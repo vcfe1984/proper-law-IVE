@@ -1,6 +1,6 @@
 /* Service worker — offline cache + versioned updates.
    VERSION and ASSETS are rewritten by tools/build.py on every build. */
-const VERSION = '9cd2fdaa644d';
+const VERSION = 'abee6156642c09b9';
 const ASSETS = [
  "./",
  "app.css",
@@ -16,7 +16,6 @@ const ASSETS = [
  "data/docs/works-of-mercy.json",
  "data/library.json",
  "data/search.json",
- "data/sources/Constitutions2013.pdf",
  "fonts/eb-garamond-latin-400-italic.woff2",
  "fonts/eb-garamond-latin-400-normal.woff2",
  "fonts/eb-garamond-latin-500-normal.woff2",
@@ -25,6 +24,18 @@ const ASSETS = [
  "fonts/source-serif-4-latin-400-normal.woff2",
  "fonts/source-serif-4-latin-600-normal.woff2",
  "icons/apple-touch-icon.png",
+ "icons/brand-192.png",
+ "icons/brand-32.png",
+ "icons/brand-512.png",
+ "icons/brand-apple-180.png",
+ "icons/brand-fdea1bafce0b-192.png",
+ "icons/brand-fdea1bafce0b-32.png",
+ "icons/brand-fdea1bafce0b-512.png",
+ "icons/brand-fdea1bafce0b-apple-180.png",
+ "icons/brand-fdea1bafce0b-maskable-512.png",
+ "icons/brand-fdea1bafce0b.svg",
+ "icons/brand-maskable-512.png",
+ "icons/brand.svg",
  "icons/icon-192.png",
  "icons/icon-512.png",
  "icons/icon-maskable-512.png",

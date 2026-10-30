@@ -169,6 +169,7 @@ body.in-doc #progress{display:block}
 .doc p.c{text-align:center}
 .doc p.r{text-align:right}
 .doc p.ind{padding-left:1.4em;text-indent:-.7em;margin-bottom:.35em}
+.doc p.disc{font-size:.76em;line-height:1.28;font-style:italic;margin-bottom:.5em}
 .doc p.art{position:relative;margin-top:1.1em}
 .doc .num{position:absolute;left:-3.6rem;top:.08em;width:2.9rem;text-align:right;font-family:var(--display);font-size:.95em;font-weight:600;color:var(--accent);text-decoration:none;font-variant-numeric:oldstyle-nums;cursor:pointer;border-radius:6px;padding:0 4px}
 .doc .num:hover{background:var(--accent-soft)}
@@ -311,4 +312,17 @@ body.in-doc #progress{display:block}
 @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
 @media print{.topbar,.reader-side,#progress,.doc-nav{display:none}.reader{display:block}.doc .num{position:static}}
 
-.edition-notice,.source-notice{padding:1rem 1.25rem;border-left:3px solid var(--accent,#8E1B2B);background:var(--surface,#f2ede5);font:400 .9rem/1.6 var(--sans,sans-serif);color:var(--muted,#6c625a);margin:1.5rem 0}.source-notice{margin-bottom:2rem}.doc .source-notice{font-size:.85rem}
+/* Mejoras compartidas */
+.bookmark-tools{display:flex;gap:10px;flex-wrap:wrap;margin:0 0 10px}.bookmark-tools .btn:disabled{opacity:.45;cursor:default}
+.doc sup.fn{font-size:.68em;line-height:0;vertical-align:super;white-space:nowrap}
+.doc sup.fn a{font-family:var(--sans);font-weight:600;color:var(--accent);text-decoration:none;padding:0 .16em;border-radius:3px}
+.doc sup.fn a:hover,.doc sup.fn a:focus-visible{background:var(--accent-soft);outline:1px solid var(--accent);outline-offset:2px}
+.footnote-content{font-family:var(--read-font);font-weight:400;overflow-wrap:anywhere}
+
+.brand-mark{width:38px;height:38px;border-radius:8px;background:#fff;box-shadow:none}.brand-mark img{display:block;width:100%;height:100%;object-fit:contain;border-radius:inherit}
+
+
+.edition-notice,.source-notice{padding:1rem 1.25rem;border-left:3px solid var(--accent);background:var(--surface);font:400 .9rem/1.6 var(--sans);color:var(--muted);margin:1.5rem 0}.doc .source-notice{font-size:.85rem}
+
+/* Iconos institucionales */
+.brand-mark{width:38px;height:38px;border-radius:8px;background:#5f2828;box-shadow:none;overflow:hidden}.brand-mark img{display:block;width:100%;height:100%;object-fit:contain;border-radius:inherit}
