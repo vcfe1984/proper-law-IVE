@@ -100,7 +100,6 @@ function showHome() {
         <span><span class="c-s">Continue reading</span><br><span class="c-t">${esc(lm.title)}</span>${last.n ? ` <span class="c-s">· no. ${last.n}</span>` : ''}</span>
       </a>` : ''}
     </section>
-    <p class="edition-notice">English edition in preparation. Only the documents listed below are currently available. Supplied translations are reproduced as received; new draft translations will be labelled for review.</p>
     ${LIB.groups.map(g => `
       <section class="group">
         <div class="group-head"><h2>${esc(g.title)}</h2><span>${g.docs.length} ${g.docs.length === 1 ? 'document' : 'documents'}</span></div>
